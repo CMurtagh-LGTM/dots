@@ -1,0 +1,33 @@
+dotfiles_dir = "Documents/packages/dots"
+
+[settings]
+# An array of toml files paths containing the variables to inject in your templatized dotfiles
+# You can have multiple var files as long as variable names does not colide.
+vars = [ "vars.toml" ]
+
+# An array of post install shell commands
+posthooks = [ "hyprctl reload", "zimfw install", "killall dunst" ]
+
+[settings.dots]
+
+hyprland = { source = "hypr", target = ".config/hypr" }
+waybar = { source = "waybar", target = ".config/waybar" }
+alacritty = { source = "alacritty", target = ".config/alacritty" }
+onagre = { source = "onagre", target = ".config/onagre" }
+dunst = { source = "dunst", target = ".config/dunst"}
+
+zshrc = { source = "zsh/zshrc", target = ".zshrc" }
+zimrc = { source = "zsh/zimrc", target = ".zimrc" }
+zshenv = { source = "zsh/zshenv", target = ".zshenv" }
+p10k = { source = "zsh/p10k.zsh", target = ".p10k.zsh" }
+
+git = { source = "git", target = ".config/git" }
+zathura = { source = "zathura", target = ".config/zathura" }
+btop = { source = "btop", target = ".config/btop" }
+
+systemd = { source = "systemd", target = ".config/systemd" }
+
+lvim = { source = "lvim", target = ".config/lvim" }
+
+# gtk-theme = { source = "Everforest-Dark-BL", target = ".themes/Everforest-Dark-BL" }
+# cursor = {}

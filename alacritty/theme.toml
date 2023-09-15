@@ -1,0 +1,27 @@
+[colors.primary]
+background = "{{bg0}}"
+foreground = "{{fg}}"
+
+[colors.normal]
+black =   "{{bg3}}"
+red =     "{{red}}"
+green =   "{{green}}"
+yellow =  "{{yellow}}"
+blue =    "{{blue}}"
+magenta = "{{purple}}"
+cyan =    "{{aqua}}"
+white =   "{{fg}}"
+
+[colors.bright]
+black =   "{{bg3}}"
+red =     "{{red}}"
+green =   "{{green}}"
+yellow =  "{{yellow}}"
+blue =    "{{blue}}"
+magenta = "{{purple}}"
+cyan =    "{{aqua}}"
+white =   "{{fg}}"
+
+[colors.search]
+matches = {foreground = "{{fg}}", background = "{{bg_green}}"}
+focused_match = {foreground = "{{fg}}", background = "{{bg_red}}"}

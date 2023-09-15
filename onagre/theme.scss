@@ -1,0 +1,54 @@
+.onagre {
+    --exit-unfocused: false;
+    height: 700px;
+    width: 1000px;
+    --font-family: "monospace";
+    --icon-theme: "{{icon_theme}}";
+    font-size: 18px;
+    background: {{bg2}};
+    color: {{fg}};
+    padding: 10px;
+
+    .container {
+        .search {
+            --spacing: 1;
+            background: {{bg4}};
+            border-radius: 0;
+            padding: 4px;
+            --height: fill-portion 1;
+            .input {
+                --width: fill-portion 24;
+                --placeholder-color: {{bg0}};
+            }
+            .plugin-hint {
+                font-size: 9px;
+                padding: 4px;
+                background: {{bg2}};
+                color: {{fg}};
+                --align-x: center;
+                --align-y: center;
+                --width: fill-portion 1;
+                --height: fill;
+            }
+        }
+        .rows {
+            --height: fill-portion 14;
+            .row {
+                border-width: 5px;
+                border-color: #FF0000;
+                .description {}
+            }
+            .row-selected {
+                background: {{red}};
+                --spacing: 3px;
+                .description {}
+            }
+        }
+        .scrollable {
+            background: {{bg4}};
+            .scroller {
+                color: #151515;
+            }
+        }
+    }
+}

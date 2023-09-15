@@ -1,0 +1,51 @@
+[global]
+    monitor = 0
+    origin = top-left
+
+    progress_bar_corner_radius = {{corner_radius}}
+
+    icon_corner_radius = {{corner_radius}}
+
+    gap_size = 3
+
+    frame_width = {{border_size}}
+
+    font = "Monospace {{font_size}}"
+
+    stack_duplicates = false
+
+    icon_theme = "{{icon_theme}}"
+
+    dmenu = "{{dmenu}} -p dunst"
+
+    corner_radius = {{corner_radius}}
+
+    timeout = "1d"
+
+    format = "<small>%a</small>\n<b>%s</b>\n%b"
+
+    foreground = "{{fg}}"
+    background = "{{bg2}}"
+    frame_color = "{{bg0}}"
+    highlight = "{{green}}" # progress bar
+
+[urgency_low]
+    foreground = "{{grey0}}"
+
+[urgency_critical]
+    frame_color = "{{red}}"
+
+[spotify]
+    appname = "Spotify"
+    background = "{{bg_green}}"
+    set_transient = true
+
+[blueman]
+    appname = "blueman"
+    set_transient = true
+
+[transient]
+    match_transient = true
+    format = "<b>%s</b>\n%b"
+    timeout = "5s"
+

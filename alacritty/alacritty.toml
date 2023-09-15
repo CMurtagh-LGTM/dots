@@ -1,0 +1,19 @@
+import = [ "~/.config/alacritty/theme.toml" ]
+
+[env]
+TERM = "alacritty"
+
+[window]
+padding = { x = 5, y = 5 }
+opacity = {{term_opacity}}
+
+[font]
+size = {{font_size}}
+
+[cursor]
+unfocused_hollow = true
+
+[keyboard]
+bindings = [
+    { key = "Enter", mods = "Control|Shift", action = "SpawnNewInstance" }
+]
