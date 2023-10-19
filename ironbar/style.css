@@ -1,0 +1,75 @@
+
+.background {
+    background-color: rgba(0,0,0,0);
+    border-bottom: 3px solid {{bg_dim}};
+    color: {{fg}};
+}
+
+button {
+    min-height: 0px;
+    min-width: 20px;
+    padding: 4px 4px;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+button:hover{
+    background-color: {{bg2}};
+}
+
+.widget {
+    background-color: {{bg2}};
+    color: {{fg}};
+}
+
+.workspaces .item {
+    color: {{fg}};
+    background-color: {{bg2}};
+    box-shadow: inset 0 -3px {{bg_dim}};
+}
+
+.workspaces .item:hover {
+    background: {{bg2}};
+    box-shadow: inset 0 -3px {{fg}};
+}
+
+.workspaces .item.focused {
+    background-color: {{bg_dim}};
+    box-shadow: inset 0 -3px {{fg}};
+}
+
+.popup-clock{
+    background-color: {{bg2}};
+}
+
+.popup-clock .calendar-clock {
+    color: {{fg}};
+}
+
+.popup-clock .calendar{
+    background-color: {{bg2}};
+    color: {{fg}};
+}
+
+.popup-clipboard {
+    background-color: {{bg2}};
+    min-width: 250px;
+}
+
+.popup-clipboard .item .btn-remove {
+    background-color: {{bg2}};
+    border: 1px solid {{bg1}};
+}
+
+.popup-music {
+    background-color: {{bg2}};
+}
+
+trough, progress {
+    border-radius: 0px;
+}
+
+progress {
+    background-color: {{fg}};
+}

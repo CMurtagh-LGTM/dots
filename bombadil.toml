@@ -6,12 +6,13 @@ dotfiles_dir = "Documents/packages/dots"
 vars = [ "vars.toml" ]
 
 # An array of post install shell commands
-posthooks = [ "hyprctl reload", "zimfw install", "killall dunst" ]
+posthooks = [ "hyprctl reload", "zimfw install", "killall dunst", "ironbar reload" ]
 
 [settings.dots]
 
 hyprland = { source = "hypr", target = ".config/hypr" }
 waybar = { source = "waybar", target = ".config/waybar" }
+ironbar = { source = "ironbar", target = ".config/ironbar" }
 alacritty = { source = "alacritty", target = ".config/alacritty" }
 onagre = { source = "onagre", target = ".config/onagre" }
 dunst = { source = "dunst", target = ".config/dunst"}
