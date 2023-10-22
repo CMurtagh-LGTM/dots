@@ -34,12 +34,12 @@
         .rows {
             --height: fill-portion 14;
             .row {
-                border-width: 5px;
-                border-color: #FF0000;
+                border-width: 1px;
+                border-color: {{bg4}};
                 .description {}
             }
             .row-selected {
-                background: {{red}};
+                background: {{bg4}};
                 --spacing: 3px;
                 .description {}
             }
