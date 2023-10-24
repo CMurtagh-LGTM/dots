@@ -2,7 +2,7 @@ position = "top"
 height = 30
 
 start = [
-    { type = "workspaces", name_map = { Discord = "󰙯", "special:Spotify" = "󰓇" }, hidden = [ "special:Spotify" ]}
+    { type = "workspaces", name_map = { Discord = "󰙯", "special:Spotify" = "󰓇" }, hidden = [ "special:Spotify" ], all_monitors = true}
 ]
 
 center = [
