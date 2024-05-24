@@ -11,6 +11,7 @@ center = [
 
 end = [
     { type = "music", format = "{title}", show_status_icon = false },
+    { type = "upower", format = "{percentage}%", icon_size = 18 },
     #{ type = "custom", name="volume", bar = [{type = "progress", max = 1, orientation="v", length=200, value = "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oe '[[:digit:]]\\.[[:digit:]]\\{2\\}'" }]},
     { type = "clipboard" },
     { type = "tray" }
