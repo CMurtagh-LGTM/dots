@@ -11,7 +11,6 @@ posthooks = [ "hyprctl reload", "zimfw install", "killall dunst", "ironbar reloa
 [settings.dots]
 
 hyprland = { source = "hypr", target = ".config/hypr" }
-waybar = { source = "waybar", target = ".config/waybar" }
 ironbar = { source = "ironbar", target = ".config/ironbar" }
 alacritty = { source = "alacritty", target = ".config/alacritty" }
 onagre = { source = "onagre", target = ".config/onagre" }
@@ -29,8 +28,6 @@ zathura = { source = "zathura", target = ".config/zathura" }
 btop = { source = "btop", target = ".config/btop" }
 
 systemd = { source = "systemd", target = ".config/systemd" }
-
-lvim = { source = "lvim", target = ".config/lvim" }
 
 # gtk-theme = { source = "Everforest-Dark-BL", target = ".themes/Everforest-Dark-BL" }
 # cursor = {}
