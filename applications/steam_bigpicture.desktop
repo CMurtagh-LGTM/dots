@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Steam (Big Picture Gamescope)
+Comment=Application for managing and playing games on Steam
+Exec=/usr/bin/gamescope -e -h 2160 -- /usr/bin/steam-runtime -bigpicture
+Icon=steam
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;Game;
+MimeType=x-scheme-handler/steam;x-scheme-handler/steamlink;
+PrefersNonDefaultGPU=true
+X-KDE-RunOnDiscreteGpu=true
+

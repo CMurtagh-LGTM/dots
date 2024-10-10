@@ -29,5 +29,11 @@ btop = { source = "btop", target = ".config/btop" }
 
 systemd = { source = "systemd", target = ".config/systemd" }
 
+applications = { source = "applications", target = ".local/share/applications" }
+
 # gtk-theme = { source = "Everforest-Dark-BL", target = ".themes/Everforest-Dark-BL" }
 # cursor = {}
+
+[profiles.desktop]
+vars = [ "desktop.toml" ]
+

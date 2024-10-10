@@ -1,3 +1,5 @@
+laptop = "false"
+
 terminal = "alacritty"
 
 corner_radius = "3"
