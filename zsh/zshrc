@@ -139,3 +139,6 @@ alias clear='cbonsai -p'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Opam
+[[ ! -r '/home/cameron/.opam/opam-init/init.zsh' ]] || source '/home/cameron/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
