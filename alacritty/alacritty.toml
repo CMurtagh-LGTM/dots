@@ -1,4 +1,4 @@
-import = [ "~/.config/alacritty/theme.toml" ]
+general.import = [ "~/.config/alacritty/theme.toml" ]
 
 [env]
 TERM = "alacritty"
