@@ -16,12 +16,12 @@ alacritty = { source = "alacritty", target = ".config/alacritty" }
 onagre = { source = "onagre", target = ".config/onagre" }
 anyrun = { source = "anyrun", target = ".config/anyrun" }
 dunst = { source = "dunst", target = ".config/dunst"}
+quickshell = { source = "quickshell", target = ".config/quickshell" }
 
 zshrc = { source = "zsh/zshrc", target = ".zshrc" }
 zimrc = { source = "zsh/zimrc", target = ".zimrc" }
 zshenv = { source = "zsh/zshenv", target = ".zshenv" }
 p10k = { source = "zsh/p10k.zsh", target = ".p10k.zsh" }
-zellij = { source = "zellij", target = ".config/zellij" }
 
 git = { source = "git", target = ".config/git" }
 zathura = { source = "zathura", target = ".config/zathura" }
