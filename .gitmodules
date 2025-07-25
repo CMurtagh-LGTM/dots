@@ -1,6 +1,0 @@
-[submodule "Everforest-GTK-Theme"]
-	path = Everforest-GTK-Theme
-	url = git@github.com:Fausto-Korpsvart/Everforest-GTK-Theme.git
-[submodule "everforest-cursors"]
-	path = everforest-cursors
-	url = git@github.com:talwat/everforest-cursors.git

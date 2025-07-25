@@ -5,8 +5,13 @@ dotfiles_dir = "Documents/packages/dots"
 # You can have multiple var files as long as variable names does not colide.
 vars = [ "vars.toml" ]
 
-# An array of post install shell commands
-posthooks = [ "hyprctl reload", "zimfw install", "killall dunst", "ironbar reload" ]
+posthooks = [
+    "python ~/.local/bin/download-themes.py" #,
+    "hyprctl reload",
+    "zimfw install",
+    "killall dunst",
+    "ironbar reload"
+]
 
 [settings.dots]
 
@@ -31,8 +36,7 @@ systemd = { source = "systemd", target = ".config/systemd" }
 
 applications = { source = "applications", target = ".local/share/applications" }
 
-# gtk-theme = { source = "Everforest-Dark-BL", target = ".themes/Everforest-Dark-BL" }
-# cursor = {}
+theme_downloader = { source = "download-themes.py", target = ".local/bin/download-themes.py" }
 
 [profiles.desktop]
 vars = [ "desktop.toml" ]
