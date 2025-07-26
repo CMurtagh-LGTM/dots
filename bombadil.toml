@@ -6,7 +6,7 @@ dotfiles_dir = "Documents/packages/dots"
 vars = [ "vars.toml" ]
 
 posthooks = [
-    "python ~/.local/bin/download-themes.py" #
+    "python ~/.local/bin/download-themes.py",
     "hyprctl reload",
     "zimfw install",
     "killall dunst"
@@ -15,7 +15,6 @@ posthooks = [
 [settings.dots]
 
 hyprland = { source = "hypr", target = ".config/hypr" }
-ironbar = { source = "ironbar", target = ".config/ironbar" }
 alacritty = { source = "alacritty", target = ".config/alacritty" }
 onagre = { source = "onagre", target = ".config/onagre" }
 anyrun = { source = "anyrun", target = ".config/anyrun" }

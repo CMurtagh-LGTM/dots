@@ -49,8 +49,8 @@ Row {
 
       PopupWindow {
         visible: mouse.containsMouse
-        width: text.contentWidth
-        height: text.contentHeight
+        implicitWidth: text.contentWidth
+        implicitHeight: text.contentHeight
         color: "{{bg2}}"
         Text {
           id: text

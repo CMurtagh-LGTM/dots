@@ -5,7 +5,9 @@ import QtQuick
 Row {
     spacing: 0
     Repeater {
-        model: Hyprland.workspaces
+        model: ScriptModel {
+            values: Hyprland.workspaces.values.filter(entry => !entry.name.startsWith("special:"))
+        }
         Rectangle {
             required property HyprlandWorkspace modelData
             property HyprlandWorkspace workspace: modelData
