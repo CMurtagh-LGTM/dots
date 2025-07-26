@@ -6,11 +6,13 @@ Row {
   spacing: 0
   Repeater {
     model: Mpris.players
-    Item {
+    Rectangle {
       required property MprisPlayer modelData
       property MprisPlayer player: modelData
       width: image.width
       height: 30
+
+      color: "{{bg2}}"
 
       Image {
         id: image
