@@ -6,11 +6,10 @@ dotfiles_dir = "Documents/packages/dots"
 vars = [ "vars.toml" ]
 
 posthooks = [
-    "python ~/.local/bin/download-themes.py" #,
+    "python ~/.local/bin/download-themes.py" #
     "hyprctl reload",
     "zimfw install",
-    "killall dunst",
-    "ironbar reload"
+    "killall dunst"
 ]
 
 [settings.dots]

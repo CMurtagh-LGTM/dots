@@ -5,9 +5,7 @@ import QtQuick
 import QtQuick.Controls
 
 // TODO
-// Tooltip
 // Icon
-// Menu
 
 Row {
   spacing: 0
@@ -26,6 +24,7 @@ Row {
       }
 
       MouseArea {
+        id: mouse
         cursorShape: Qt.PointingHandCursor
         anchors.fill: parent
         hoverEnabled: true
@@ -37,6 +36,7 @@ Row {
           } else if (event.button == Qt.MiddleButton) {
             item.secondaryActivate();
           } else if (event.button == Qt.RightButton) {
+            menuAnchor.menu = item.menu
             menuAnchor.open();
           }
         }
@@ -44,6 +44,30 @@ Row {
           event.accepted = true;
           const points = event.angleDelta.y / 120
           item.scroll(points, false);
+        }
+      }
+
+      PopupWindow {
+        visible: mouse.containsMouse
+        width: text.contentWidth
+        height: text.contentHeight
+        color: "{{bg2}}"
+        Text {
+          id: text
+          color: "{{fg}}"
+          text: item.tooltipTitle || item.title
+        }
+        anchor {
+          item: parent
+          edges: Edges.Bottom | Edges.Left
+        }
+      }
+
+      QsMenuAnchor {
+        id: menuAnchor
+        anchor {
+          item: parent
+          edges: Edges.Bottom | Edges.Left
         }
       }
     }
