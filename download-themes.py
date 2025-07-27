@@ -6,9 +6,9 @@ import bz2
 import zipfile
 import shutil
 
-def download_if_needed(name, prefix, path, url, extration, namelist):
+def download_archive_if_needed(name, prefix, path, url, extration, namelist):
     path = os.path.expanduser(path)
-    if os.path.isdir(path + name):
+    if os.path.exists(path + name):
         print(f"skipped {name} as it was already downloaded")
         return
 
@@ -26,8 +26,20 @@ def download_if_needed(name, prefix, path, url, extration, namelist):
             shutil.copytree(path + prefix + name, path + name)
             shutil.rmtree(path + prefix)
 
+def download_image_if_needed(name, path, url):
+    path = os.path.expanduser(path)
+    if os.path.exists(path + name):
+        print(f"skipped {name} as it was already downloaded")
+        return
+
+    print(f"downloading {name}")
+    os.makedirs(path, exist_ok=True)
+    with urllib.request.urlopen(url) as resp:
+        with open(path + name, 'wb') as image_file:
+            image_file.write(resp.read())
+
 ### cursors ###
-download_if_needed(
+download_archive_if_needed(
     "everforest-cursors/",
     "./",
     "~/.local/share/icons/",
@@ -38,7 +50,7 @@ download_if_needed(
 
 ### icons ###
 # TODO maybe also copy over the gtk theme
-# download_if_needed(
+# download_archive_if_needed(
 #     "Everforest-Dark/",
 #     "Everforest-GTK-Theme-55c9d11b409a14c98b3d343e0e04ea27397530c3/icons/",
 #     "~/.local/share/icons/",
@@ -49,3 +61,11 @@ download_if_needed(
 # cleanup_dir = os.path.expanduser("~/.local/share/icons/Everforest-GTK-Theme-55c9d11b409a14c98b3d343e0e04ea27397530c3/")
 # if os.path.isdir(cleanup_dir):
 #     shutil.rmtree(cleanup_dir)
+
+### user picture ###
+download_image_if_needed(
+    "pfp.png",
+    "~/.config/quickshell/panel/",
+    "https://avatars.githubusercontent.com/u/43051455?s=400&u=04daea882121b5dbc54a3457f3d3fbb33617ff72&v=4"
+)
+

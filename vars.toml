@@ -14,6 +14,10 @@ icon_theme = "Suru++"
 
 dmenu = "/usr/bin/wofi -d"
 
+username = "CMurtagh-LGTM"
+
+### Colours ###
+
 bg_dim = "#232A2E"
 bg0 = "#2D353B"
 bg1 = "#343F44"

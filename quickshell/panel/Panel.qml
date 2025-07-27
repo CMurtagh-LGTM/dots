@@ -21,32 +21,26 @@ Scope {
       RowLayout {
         anchors.fill: parent
         spacing: 5
-        Item {
+        Sinks {
+          Layout.alignment: Qt.AlignTop
           Layout.fillWidth: true
           Layout.fillHeight: true
-          Sinks {}
         }
-        Rectangle{
-          color: "{{bg2}}"
-          Layout.fillWidth: true
-          Layout.fillHeight: true
-          bottomLeftRadius: 5
-          bottomRightRadius: 5
-          topLeftRadius: 5
-          topRightRadius: 5
-          border {
-            color: "{{bg_dim}}"
-            width: 3
+        ColumnLayout{
+          User {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+          }
+          Resource {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
           }
         }
         Rectangle{
           color: "{{bg2}}"
           Layout.fillWidth: true
           Layout.fillHeight: true
-          bottomLeftRadius: 5
-          bottomRightRadius: 5
-          topLeftRadius: 5
-          topRightRadius: 5
+          radius: 5
           border {
             color: "{{bg_dim}}"
             width: 3

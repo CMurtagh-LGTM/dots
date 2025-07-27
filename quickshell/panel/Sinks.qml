@@ -4,9 +4,8 @@ import QtQuick.Controls
 import Quickshell
 import Quickshell.Services.Pipewire
 
-// TODO
+// TODO instead of column layout have buttons to scroll between
 ColumnLayout{
-  anchors.fill: parent
   Repeater {
     model: ScriptModel {
       values: Pipewire.nodes.values.filter(entry => entry.isSink && entry.audio && !entry.isStream)
@@ -17,13 +16,10 @@ ColumnLayout{
       color: "{{bg2}}"
 
       Layout.fillWidth: true
+      Layout.alignment: Qt.AlignTop
       implicitHeight: 60
-      anchors.top: parent.top
 
-      bottomLeftRadius: 5
-      bottomRightRadius: 5
-      topLeftRadius: 5
-      topRightRadius: 5
+      radius: 5
       border {
         color: Pipewire.defaultAudioSink.id == sink.id ? "{{bg_green}}" : "{{bg_dim}}"
         width: 3

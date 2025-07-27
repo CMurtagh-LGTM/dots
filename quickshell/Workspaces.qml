@@ -16,6 +16,10 @@ Row {
             width: 28 // 4 + 20 + 4
             height: 30
 
+            Behavior on color {
+                ColorAnimation { duration: 250 }
+            }
+
             Text {
                 text: ({
                         "special:Discord": "󰙯",
@@ -35,6 +39,9 @@ Row {
                 width: 28
                 color: workspace.focused ? "{{fg}}" : mouse.containsMouse ? "{{fg}}" : "{{bg_dim}}"
                 anchors.bottom: parent.bottom
+                Behavior on color {
+                    ColorAnimation { duration: 250 }
+                }
             }
 
             MouseArea {
