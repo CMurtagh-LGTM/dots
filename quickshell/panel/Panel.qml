@@ -42,7 +42,7 @@ Scope {
             Layout.fillHeight: true
           }
         }
-        Rectangle{
+        Rectangle{ // TODO Weather & Calendar
           color: "{{bg2}}"
           Layout.fillWidth: true
           Layout.fillHeight: true

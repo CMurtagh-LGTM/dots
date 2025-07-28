@@ -42,7 +42,7 @@ Rectangle {
       Shape {
         anchors.fill: parent
         ShapePath {
-          strokeColor: "{{bg_dim}}"
+          strokeColor: "{{bg1}}"
           strokeWidth: 3
           fillColor: "transparent"
 

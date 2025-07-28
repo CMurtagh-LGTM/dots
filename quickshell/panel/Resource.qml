@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Shapes
 import Quickshell
 
 import qs.widgets
@@ -17,22 +18,26 @@ Rectangle{
     service: SystemUsage
   }
 
-  ColumnLayout {
+  RowLayout {
     anchors.margins: 25
     anchors.fill: parent
     Resource {
       value: SystemUsage.cpuPerc
-      colour: "{{red}}"
-      label: ""
+      colour: "{{fg}}"
+      label: "CPU"
+      middleLabel: `${SystemUsage.cpuTemp.toFixed(1)}℃`
+    }
+    Resource {
+      value: SystemUsage.gpuPerc
+      colour: "{{fg}}"
+      label: "GPU"
+      middleLabel: `${SystemUsage.gpuTemp.toFixed(1)}℃`
     }
     Resource {
       value: SystemUsage.memPerc
-      colour: "{{red}}"
-      label: ""
-    }
-    Text{
-      text: SystemUsage.cpuTemp
-      Layout.fillWidth: true
+      colour: "{{fg}}"
+      label: "MEM"
+      middleLabel: `${(SystemUsage.memUsed/1048576).toFixed(1)}GB`
     }
   }
 
@@ -41,31 +46,62 @@ Rectangle{
     required property real value
     required property color colour
     required property string label
+    required property string middleLabel
 
-    implicitHeight: label.implicitHeight
     Layout.fillWidth: true
+    implicitHeight: width
 
+    Shape {
+      anchors.fill: parent
+      ShapePath{
+        strokeColor: "{{bg1}}"
+        strokeWidth: 5
+        fillColor: "transparent"
+        capStyle: ShapePath.RoundCap
+
+        startX: 0
+        startY: 0
+        PathAngleArc {
+          startAngle: 105
+          sweepAngle: 330
+
+          centerX: resource.width/2
+          centerY: resource.height/2
+          radiusX: resource.width/2 - 10
+          radiusY: resource.height/2 - 10
+        }
+      }
+      ShapePath{
+        strokeColor: colour
+        strokeWidth: 5
+        fillColor: "transparent"
+        capStyle: ShapePath.RoundCap
+
+        startX: 0
+        startY: 0
+        PathAngleArc {
+          startAngle: 105
+          sweepAngle: value * 330
+
+          centerX: resource.width/2
+          centerY: resource.height/2
+          radiusX: resource.width/2 - 10
+          radiusY: resource.height/2 - 10
+        }
+      }
+    }
     Text {
       id: label
       text: resource.label
-      anchors.verticalCenter: parent.verticalCenter
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.bottom: parent.bottom
+      color: "{{fg}}"
     }
-    Rectangle {
-      anchors.verticalCenter: parent.verticalCenter
-      anchors.left: label.right
-      anchors.right: parent.right
-      anchors.leftMargin: 3
-      implicitHeight: 4
-      radius: 2
-      color: "{{bg3}}"
-      Rectangle {
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        implicitWidth: parent.width * value
-        color: colour
-        radius: 2
-      }
+    Text {
+      id: middleLabel
+      text: resource.middleLabel
+      anchors.centerIn: parent
+      color: "{{fg}}"
     }
     Behavior on value {
         NumberAnimation { duration: 100 }

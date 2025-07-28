@@ -10,4 +10,5 @@ Scope {
   // Lock
   // Notification
   Panel {}
+  // Power
 }
