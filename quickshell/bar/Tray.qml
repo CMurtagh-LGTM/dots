@@ -4,8 +4,7 @@ import Quickshell.Widgets
 import QtQuick
 import QtQuick.Controls
 
-// TODO
-// Icon
+// TODO Make icon work
 
 Row {
   spacing: 0

@@ -3,6 +3,8 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
 
+// TODO make buttons reuse code
+
 Scope {
   Variants {
     model: Quickshell.screens
@@ -21,9 +23,14 @@ Scope {
       RowLayout {
         anchors.fill: parent
         spacing: 5
-        Sinks {
-          Layout.alignment: Qt.AlignTop
-          Layout.fillWidth: true
+        ColumnLayout {
+          Media {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+          }
+          Sinks {
+            Layout.fillWidth: true
+          }
         }
         ColumnLayout{
           User {

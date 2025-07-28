@@ -1,5 +1,7 @@
 import QtQuick
 
+import qs.services
+
 Rectangle {
     color: "{{bg2}}"
     height: 30

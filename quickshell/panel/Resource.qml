@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 
-import "root:/services"
-// import qs.servies
+import qs.widgets
+import qs.services
 
 Rectangle{
   color: "{{bg2}}"
@@ -11,6 +11,10 @@ Rectangle{
   border {
     color: "{{bg_dim}}"
     width: 3
+  }
+
+  Ref {
+    service: SystemUsage
   }
 
   ColumnLayout {

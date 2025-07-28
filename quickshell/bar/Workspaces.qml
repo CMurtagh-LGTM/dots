@@ -23,7 +23,7 @@ Row {
             Text {
                 text: ({
                         "special:Discord": "󰙯",
-                        "special:Spotify": "󰓇", // TODO work out how to not display this
+                        "special:Spotify": "󰓇",
                         "Mail": "",
                         "Steam": "󰓓"
                     })[workspace.name] || workspace.name

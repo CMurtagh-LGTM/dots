@@ -1,8 +1,8 @@
 //@ pragma UseQApplication
 import Quickshell
-import "panel"
-// import qs.panel
-// import qs.bar
+
+import qs.panel
+import qs.bar
 
 Scope {
   Bar {}

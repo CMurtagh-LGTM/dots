@@ -4,6 +4,8 @@ import QtQuick.Controls
 import Quickshell
 import Quickshell.Services.Pipewire
 
+import qs.widgets
+
 // TODO animate scroll
 
 Rectangle{
@@ -53,32 +55,18 @@ Rectangle{
           onClicked: Pipewire.preferredDefaultAudioSink = sink
         }
       }
-      Text{
+      RoundButton {
         id: left
-        color: "{{fg}}"
         text: ""
         visible: model.length > 1
-        MouseArea {
-          id: mouse_left
-          cursorShape: Qt.PointingHandCursor
-          anchors.fill: parent
-          hoverEnabled: true
-          onClicked: index = (index - 1) % model.length
-        }
+        onClicked: index = (((index - 1) % model.length) + model.length ) % model.length
       }
-      Text{
-        anchors.right: parent.right
+      RoundButton {
         id: right
-        color: "{{fg}}"
+        anchors.right: parent.right
         text: ""
         visible: model.length > 1
-        MouseArea {
-          id: mouse_right
-          cursorShape: Qt.PointingHandCursor
-          anchors.fill: parent
-          hoverEnabled: true
-          onClicked: index = (index + 1) % model.length
-        }
+        onClicked: index = (index + 1) % model.length
       }
     }
     Item {
@@ -88,8 +76,9 @@ Rectangle{
       Text {
         id: percent
         color: "{{fg}}"
-        text: (sink.audio.volume * 100).toFixed(1)
-        width: 32
+        text: `${(sink.audio.volume * 100).toFixed(1)}%`
+        width: 40
+        anchors.verticalCenter: parent.anchors.verticalCenter
       }
       Slider {
         id: control
@@ -98,6 +87,7 @@ Rectangle{
         anchors.left: percent.right
         anchors.right: mute.left
         anchors.rightMargin: 4
+        height: parent.height
         background: Rectangle {
           x: control.leftPadding
           y: control.topPadding + control.availableHeight / 2 - height / 2
@@ -124,25 +114,11 @@ Rectangle{
           border.color: "{{bg_dim}}"
         }
       }
-      Rectangle {
+      RoundButton {
         id: mute
-        width: 16 
-        height: 16
-        color: mouse.containsMouse ? "{{bg4}}": "{{bg3}}"
-        border.color: "{{bg_dim}}"
         anchors.right: parent.right
-        Text {
-          anchors.centerIn: parent
-          id: text
-          text: sink.audio.muted ? "󰝟" : "󰕾"
-        }
-        MouseArea {
-          id: mouse
-          cursorShape: Qt.PointingHandCursor
-          anchors.fill: parent
-          hoverEnabled: true
-          onClicked: sink.audio.muted = !sink.audio.muted
-        }
+        text: sink.audio.muted ? "󰝟" : "󰕾"
+        onClicked: sink.audio.muted = !sink.audio.muted
       }
     }
   }

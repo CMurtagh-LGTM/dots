@@ -52,18 +52,6 @@ Row {
         hoverEnabled: true
         onClicked: player.togglePlaying()
       }
-
-      // TODO use popup
-      // Tooltip {
-      //   contentItem: Row {
-      //     Text {
-      //       text: "a"
-      //     }
-      //     Text {
-      //       text: "b"
-      //     }
-      //   }
-      // }
     }
   }
 }
