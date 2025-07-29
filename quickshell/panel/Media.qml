@@ -78,64 +78,71 @@ Rectangle {
         }
       }
     }
-    RowLayout {
-      Layout.alignment: Qt.AlignHCenter
-      RoundButton {
-        text: ""
-        visible: playerCount > 1
-        onClicked: index = (((index - 1) % playerCount) + playerCount ) % playerCount
+    ColumnLayout {
+      Layout.fillHeight: true
+      // Layout.fillWidth: true
+      width: parent.width
+      RowLayout {
+        Layout.alignment: Qt.AlignHCenter
+        RoundButton {
+          text: ""
+          visible: playerCount > 1
+          onClicked: index = (((index - 1) % playerCount) + playerCount ) % playerCount
+        }
+        Text {
+          color: "{{fg}}"
+          text: `${player.identity || "Unknown"}`
+        }
+        RoundButton {
+          text: ""
+          visible: playerCount > 1
+          onClicked: index = (index + 1) % playerCount
+        }
+      }
+      Row {
+        Layout.maximumWidth: parent.width
+        Layout.alignment: Qt.AlignHCenter
+        Text {
+          color: "{{fg}}"
+          text: `${player.trackTitle || "Unknown"}`
+        }
+        Text {
+          color: "{{fg}}"
+          text: player.trackAlbum ? " - " : ""
+        }
+        Text {
+          color: "{{fg}}"
+          text: `${player.trackAlbum}`
+        }
       }
       Text {
+        Layout.alignment: Qt.AlignHCenter
         color: "{{fg}}"
-        text: `${player.identity || "Unknown"}`
+        text: `${player.trackArtist || "Unknown"}`
       }
-      RoundButton {
-        text: ""
-        visible: playerCount > 1
-        onClicked: index = (index + 1) % playerCount
-      }
-    }
-    Row {
-      Layout.alignment: Qt.AlignHCenter
-      Text {
-        color: "{{fg}}"
-        text: `${player.trackTitle || "Unknown"}`
-      }
-      Text {
-        color: "{{fg}}"
-        text: " - "
-      }
-      Text {
-        color: "{{fg}}"
-        text: `${player.trackAlbum || "Unknown"}`
-      }
-    }
-    Text {
-      Layout.alignment: Qt.AlignHCenter
-      color: "{{fg}}"
-      text: `${player.trackArtist || "Unknown"}`
-    }
-    RowLayout {
-      Layout.alignment: Qt.AlignHCenter
-      RoundButton {
-        text: "󰒮"
-        visible: player.canGoPrevious
-        onClicked: player.previous()
-      }
-      RoundButton {
-        text: player.isPlaying ? "󰏤" : "󰐊"
-        visible: player.canPlay && player.canPause
-        onClicked: player.togglePlaying()
-      }
-      RoundButton {
-        text: "󰒭"
-        visible: player.canGoNext
-        onClicked: player.next()
+      RowLayout {
+        Layout.alignment: Qt.AlignHCenter
+        RoundButton {
+          text: "󰒮"
+          visible: player.canGoPrevious
+          onClicked: player.previous()
+        }
+        RoundButton {
+          text: player.isPlaying ? "󰏤" : "󰐊"
+          visible: player.canPlay && player.canPause
+          onClicked: player.togglePlaying()
+        }
+        RoundButton {
+          text: "󰒭"
+          visible: player.canGoNext
+          onClicked: player.next()
+        }
       }
     }
     RowLayout {
       Layout.fillWidth: true
-      Layout.preferredHeight: 200
+      Layout.fillHeight: true
+      Layout.minimumHeight: parent.height / 4
       Ref {
         service: Cava
       }
