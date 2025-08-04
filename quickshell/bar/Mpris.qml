@@ -26,7 +26,7 @@ Row {
           id: text
           font.pixelSize: 16
           width: parent.width - 8
-          text: `${player.trackTitle || "Unknown"} - ${player.trackAlbum || "Unknown"}`
+          text: `${player.trackTitle || "Unknown"}${player.trackAlbum ? " - " + player.trackAlbum : ""}`
           elide: Text.ElideRight
         }
       }

@@ -80,8 +80,8 @@ Rectangle {
     }
     ColumnLayout {
       Layout.fillHeight: true
-      // Layout.fillWidth: true
       width: parent.width
+      Layout.alignment: Qt.AlignHCenter
       RowLayout {
         Layout.alignment: Qt.AlignHCenter
         RoundButton {

@@ -7,9 +7,8 @@ vars = [ "vars.toml" ]
 
 posthooks = [
     "python ~/.local/bin/download-themes.py",
-    "hyprctl reload",
-    "zimfw install",
-    "killall dunst"
+    # "hyprctl reload",
+    "zimfw install"
 ]
 
 [settings.dots]
