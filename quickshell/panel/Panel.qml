@@ -3,11 +3,9 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
 
-// TODO make buttons reuse code
-
 Scope {
   Variants {
-    model: Quickshell.screens
+    model: Quickshell.screens // TODO only current screen
 
     PanelWindow {
       id: panel
@@ -18,7 +16,7 @@ Scope {
       implicitWidth: screen.width * 0.6
       implicitHeight: screen.height * 0.6
 
-      color: "#00000000"
+      color: "transparent"
 
       RowLayout {
         anchors.fill: parent

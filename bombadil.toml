@@ -17,7 +17,6 @@ hyprland = { source = "hypr", target = ".config/hypr" }
 alacritty = { source = "alacritty", target = ".config/alacritty" }
 onagre = { source = "onagre", target = ".config/onagre" }
 anyrun = { source = "anyrun", target = ".config/anyrun" }
-dunst = { source = "dunst", target = ".config/dunst"}
 quickshell = { source = "quickshell", target = ".config/quickshell" }
 
 zshrc = { source = "zsh/zshrc", target = ".zshrc" }

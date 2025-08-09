@@ -36,7 +36,7 @@ Rectangle {
         radius: width/2
         Image {
           anchors.fill: parent
-          source: player.trackArtUrl // TODO cache the image
+          source: player ? player.trackArtUrl : "pfp.png" // TODO cache the image
         }
       }
       Shape {
@@ -59,7 +59,7 @@ Rectangle {
           }
         }
         ShapePath {
-          strokeColor: player.isPlaying ? "{{green}}" : "{{fg}}"
+          strokeColor: player?.isPlaying ? "{{green}}" : "{{fg}}"
           capStyle: ShapePath.RoundCap
           strokeWidth: 3
           fillColor: "transparent"
@@ -68,7 +68,7 @@ Rectangle {
           startY : 0
           PathAngleArc {
             startAngle: 90
-            sweepAngle: (player.position/player.length) * 360
+            sweepAngle: player ? (player.position/player.length) * 360 : 0
 
             centerX: albumArt.width/2
             centerY: albumArt.height/2
@@ -87,16 +87,16 @@ Rectangle {
         RoundButton {
           text: ""
           visible: playerCount > 1
-          onClicked: index = (((index - 1) % playerCount) + playerCount ) % playerCount
+          onClicked: index = player ? (((index - 1) % playerCount) + playerCount ) % playerCount : 0
         }
         Text {
           color: "{{fg}}"
-          text: `${player.identity || "Unknown"}`
+          text: `${player && player.identity || "Unknown"}`
         }
         RoundButton {
           text: ""
           visible: playerCount > 1
-          onClicked: index = (index + 1) % playerCount
+          onClicked: index = player ? (index + 1) % playerCount : 0
         }
       }
       Row {
@@ -104,37 +104,37 @@ Rectangle {
         Layout.alignment: Qt.AlignHCenter
         Text {
           color: "{{fg}}"
-          text: `${player.trackTitle || "Unknown"}`
+          text: `${player?.trackTitle || "Unknown"}`
         }
         Text {
           color: "{{fg}}"
-          text: player.trackAlbum ? " - " : ""
+          text: player?.trackAlbum ? " - " : ""
         }
         Text {
           color: "{{fg}}"
-          text: `${player.trackAlbum}`
+          text: `${player?.trackAlbum || ""}`
         }
       }
       Text {
         Layout.alignment: Qt.AlignHCenter
         color: "{{fg}}"
-        text: `${player.trackArtist || "Unknown"}`
+        text: `${player?.trackArtist || "Unknown"}`
       }
       RowLayout {
         Layout.alignment: Qt.AlignHCenter
         RoundButton {
           text: "󰒮"
-          visible: player.canGoPrevious
+          visible: player?.canGoPrevious ?? false
           onClicked: player.previous()
         }
         RoundButton {
-          text: player.isPlaying ? "󰏤" : "󰐊"
-          visible: player.canPlay && player.canPause
+          text: player?.isPlaying ? "󰏤" : "󰐊"
+          visible: (player?.canPlay && player?.canPause) ?? false
           onClicked: player.togglePlaying()
         }
         RoundButton {
           text: "󰒭"
-          visible: player.canGoNext
+          visible: player?.canGoNext ?? false
           onClicked: player.next()
         }
       }

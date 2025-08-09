@@ -19,7 +19,7 @@ QtObject {
 
   readonly property Timer timer: Timer {
     running: true
-    interval: root.notification.expireTimeout > 0 ? root.notification.expireTimeout : 1000 
+    interval: root.notification.expireTimeout > 0 ? root.notification.expireTimeout : 10000
     onTriggered: root.popup = false;
   }
 }

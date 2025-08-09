@@ -14,6 +14,7 @@ Scope {
         left: true
         right: true
       }
+      aboveWindows: false
 
       implicitHeight: 30
 

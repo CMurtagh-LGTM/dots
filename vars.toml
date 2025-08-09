@@ -48,6 +48,8 @@ bg3l = "#E6E2CC"
 bg4l = "#E0DCC7"
 fgl = "#5C6A72"
 
+tint = "#CC232A2E"
+
 bg_dim_hypr = "rgb(232A2E)"
 bg0_hypr = "rgb(2D353B)"
 bg1_hypr = "rgb(343F44)"

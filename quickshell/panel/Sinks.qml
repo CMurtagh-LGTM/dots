@@ -12,7 +12,7 @@ Rectangle{
   property list<PwNode> model: Pipewire.nodes.values.filter(entry => entry.isSink && entry.audio && !entry.isStream)
   property int index: model.findIndex((node) => node.id == Pipewire.defaultAudioSink.id)
   property PwNode sink: model[index]
-  property bool isDefaultSink: Pipewire.defaultAudioSink.id == sink.id
+  property bool isDefaultSink: Pipewire.defaultAudioSink?.id == sink?.id
 
   color: "{{bg2}}"
 
@@ -39,7 +39,7 @@ Rectangle{
         anchors.horizontalCenter: parent.horizontalCenter
         id: name
         color: "{{fg}}"
-        text: sink.description || sink.name
+        text: sink?.description || sink?.name || "unknown"
       }
       Text{
         id: select
@@ -76,13 +76,13 @@ Rectangle{
       Text {
         id: percent
         color: "{{fg}}"
-        text: `${(sink.audio.volume * 100).toFixed(1)}%`
+        text: `${sink ? (sink.audio.volume * 100).toFixed(1) : "??"}%`
         width: 40
         anchors.verticalCenter: parent.anchors.verticalCenter
       }
       Slider {
         id: control
-        value: sink.audio.volume
+        value: sink?.audio.volume ?? 0
         onMoved: sink.audio.volume = value
         anchors.left: percent.right
         anchors.right: mute.left
@@ -117,7 +117,7 @@ Rectangle{
       RoundButton {
         id: mute
         anchors.right: parent.right
-        text: sink.audio.muted ? "󰝟" : "󰕾"
+        text: sink?.audio.muted ? "󰝟" : "󰕾"
         onClicked: sink.audio.muted = !sink.audio.muted
       }
     }
