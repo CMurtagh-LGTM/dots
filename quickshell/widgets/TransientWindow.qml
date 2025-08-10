@@ -45,15 +45,18 @@ PanelWindow {
     anchors.fill: parent
     color: "{{tint}}"
 
-    Loader {
-      anchors.centerIn: parent
-      width: parent.width * widthRatio
-      height: parent.height * heightRatio
-      sourceComponent: component
-    }
     MouseArea {
       anchors.fill: parent
       onClicked: w.visible = false
+      MouseArea {
+        anchors.centerIn: parent
+        width: parent.width * widthRatio
+        height: parent.height * heightRatio
+        Loader {
+          anchors.fill: parent
+          sourceComponent: component
+        }
+      }
     }
   }
 }
