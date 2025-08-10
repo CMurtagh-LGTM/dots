@@ -1,26 +1,26 @@
 import QtQuick
 import Quickshell
 import Quickshell.Io
+import Quickshell.Wayland
+
+import qs.widgets
 
 Scope {
   Variants {
-    model: Quickshell.screens
+    model: Quickshell.screens // TODO only current screen
 
-    PanelWindow {
-      id: launcher
+    TransientWindow {
       property var modelData
       screen: modelData
-      visible: false
-      focusable: true
-
-      Text {
-        text: "hi"
-      }
-
-      IpcHandler {
-        target: "launcher"
-
-        function display(visible: bool): void { launcher.visible = visible }
+      namespace: "shell:launcher"
+      ipcTarget: "launcher"
+      widthRatio: 0.3
+      heightRatio: 0.6
+      component: Component {
+        Rectangle {
+          color: "{{bg2}}"
+          Text { text: "hi" }
+        }
       }
     }
   }
