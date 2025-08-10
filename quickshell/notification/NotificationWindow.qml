@@ -11,7 +11,7 @@ Scope {
     PanelWindow {
       property var modelData
       screen: modelData
-	  WlrLayershell.namespace: "shell:notifications"
+      WlrLayershell.namespace: "shell:notifications"
 
       exclusionMode: ExclusionMode.Ignore
       anchors {

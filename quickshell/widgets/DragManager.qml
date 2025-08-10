@@ -1,7 +1,5 @@
 // borrowed from end-4/dots-hyprland under GPL-3.0
-//
-import qs.modules.common
-import qs.services
+
 import QtQuick
 
 /**
