@@ -4,7 +4,7 @@ import Quickshell
 
 import qs.widgets
 
-Item {
+Flickable {
   id: root
   required property TrackedNotification notification
 
@@ -12,15 +12,20 @@ Item {
     item: popup
   }
 
-  property real dragDistance: 500
+  property real dragDistance: 100
 
-  width: popup.width
-  height: popup.height
+  width: 250
+  height: 100
+  opacity: 1.0 - Math.max(-horizontalOvershoot, 0) / dragDistance
+  onHorizontalOvershootChanged: notification.popup = Math.max(-horizontalOvershoot, 0) < dragDistance
+
+  contentWidth: 250
+  contentHeight: 100
+  rightMargin: 1
 
   Rectangle {
     id: popup
-    implicitWidth: 250
-    implicitHeight: 100
+    anchors.fill: parent
 
     property color _textColour: "{{fg}}"
 
@@ -62,33 +67,10 @@ Item {
       }
     }
   }
-
-  DragManager {
-    id: dragManager
+  
+  MouseArea {
     anchors.fill: parent
-    acceptedButtons: Qt.LeftButton | Qt.RightButton
-
-    onClicked: (mouse) => {
-      if (mouse.button === Qt.RightButton) {
-        notification.popup = false
-      }
-    }
-
-    onDragDiffXChanged: () => {
-      const x = Math.max(Math.min(dragDiffX, root.dragDistance), 0);
-      popup.x = x
-      const alpha = 1 - x/root.dragDistance
-      popup.color.a = alpha
-      popup.border.color.a = alpha
-      popup._textColour.a = alpha
-    }
-
-    onDragReleased: (diffX, diffY) => {
-      if (diffX > 70) {
-        notification.popup = false
-      } else {
-        dragManager.resetDrag();
-      }
-    }
+    acceptedButtons: Qt.RightButton
+    onClicked: notification.popup = false
   }
 }
