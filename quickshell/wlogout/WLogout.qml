@@ -5,105 +5,128 @@ import Quickshell.Io
 import Quickshell.Wayland
 
 Variants {
-	id: root
-	property color backgroundColor: "{{tint}}"
-	property color buttonColor: "{{bg2}}"
-	property color buttonHoverColor: "{{bg3}}"
-	default property list<LogoutButton> buttons
+    id: root
+    property color backgroundColor: "{{tint}}"
+    property color buttonColor: "{{bg2}}"
+    property color buttonHoverColor: "{{bg3}}"
+    default property list<LogoutButton> buttons
 
-	model: Quickshell.screens
-	property QsWindow window: PanelWindow {
-		id: w
+    model: Quickshell.screens
 
-		property var modelData
-		screen: modelData
+    Item {
+        PersistentProperties {
+            id: persist
+            property bool open: false
+        }
 
-		exclusionMode: ExclusionMode.Ignore
-		WlrLayershell.layer: WlrLayer.Overlay
-		WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+        IpcHandler {
+            target: "logout"
 
-		color: "transparent"
+            function display(visible: bool): void {
+                persist.open = visible;
+            }
+            function toggle(): void {
+                persist.open = !persist.open;
+            }
+        }
+        LazyLoader {
+            activeAsync: persist.open
+            PanelWindow {
+                id: w
 
-		contentItem {
-			focus: true
-			Keys.onPressed: event => {
-				if (event.key == Qt.Key_Escape) window.visible = false;
-				else {
-					for (let i = 0; i < buttons.length; i++) {
-						let button = buttons[i];
-						if (event.key == button.keybind) button.exec();
-					}
-				}
-			}
-		}
+                property var modelData
+                screen: modelData
 
-		anchors {
-			top: true
-			left: true
-			bottom: true
-			right: true
-		}
+                exclusionMode: ExclusionMode.Ignore
+                WlrLayershell.layer: WlrLayer.Overlay
+                WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
-		Rectangle {
-			color: backgroundColor;
-			anchors.fill: parent
+                color: "transparent"
 
-			MouseArea {
-				anchors.fill: parent
-				onClicked: window.visible = false
+                contentItem {
+                    focus: true
+                    Keys.onPressed: event => {
+                        if (event.key == Qt.Key_Escape)
+                            persist.open = false;
+                        else {
+                            for (let i = 0; i < buttons.length; i++) {
+                                let button = buttons[i];
+                                if (event.key == button.keybind)
+                                    button.exec();
+                            }
+                        }
+                    }
+                }
 
-				GridLayout {
-					anchors.centerIn: parent
+                anchors {
+                    top: true
+                    left: true
+                    bottom: true
+                    right: true
+                }
 
-					width: parent.width * 0.75
-					height: parent.height * 0.75
+                Rectangle {
+                    color: backgroundColor
+                    anchors.fill: parent
 
-					columns: 3
-					columnSpacing: 0
-					rowSpacing: 0
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: persist.open = false
 
-					Repeater {
-						model: buttons
-						delegate: Rectangle {
-							required property LogoutButton modelData;
+                        GridLayout {
+                            anchors.centerIn: parent
 
-							Layout.fillWidth: true
-							Layout.fillHeight: true
+                            width: parent.width * 0.75
+                            height: parent.height * 0.75
 
-							color: ma.containsMouse ? buttonHoverColor : buttonColor
-							border.color: "{{bg_dim}}"
-							border.width: 1
+                            columns: 3
+                            columnSpacing: 0
+                            rowSpacing: 0
 
-							MouseArea {
-								id: ma
-								anchors.fill: parent
-								hoverEnabled: true
-								onClicked: modelData.exec()
-							}
+                            Repeater {
+                                model: buttons
+                                delegate: Rectangle {
+                                    required property LogoutButton modelData
 
-							Image {
-								id: icon
-								anchors.centerIn: parent
-								source: `icons/${modelData.icon}.png`
-								width: parent.width * 0.25
-								height: parent.width * 0.25
-							}
+                                    Layout.fillWidth: true
+                                    Layout.fillHeight: true
 
-							Text {
-								anchors {
-									top: icon.bottom
-									topMargin: 20
-									horizontalCenter: parent.horizontalCenter
-								}
+                                    color: ma.containsMouse ? buttonHoverColor : buttonColor
+                                    border.color: "{{bg_dim}}"
+                                    border.width: 1
 
-								text: modelData.text
-								font.pointSize: 20
-								color: "{{fg}}"
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+                                    MouseArea {
+                                        id: ma
+                                        anchors.fill: parent
+                                        hoverEnabled: true
+                                        onClicked: modelData.exec()
+                                    }
+
+                                    Image {
+                                        id: icon
+                                        anchors.centerIn: parent
+                                        source: `icons/${modelData.icon}.png`
+                                        width: parent.width * 0.25
+                                        height: parent.width * 0.25
+                                    }
+
+                                    Text {
+                                        anchors {
+                                            top: icon.bottom
+                                            topMargin: 20
+                                            horizontalCenter: parent.horizontalCenter
+                                        }
+
+                                        text: modelData.text
+                                        font.pointSize: 20
+                                        color: "{{fg}}"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

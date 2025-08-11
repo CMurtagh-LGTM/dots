@@ -2,59 +2,72 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
+import Quickshell.Hyprland
 
-PanelWindow {
-  id: w
-
+Item {
+  id: root
   required property ShellScreen screen
-  screen: screen
-
   property string namespace
-  WlrLayershell.namespace: namespace
-
   required property string ipcTarget
   required property real widthRatio
   required property real heightRatio
   required property Component component
 
-  anchors {
-    top: true
-    left: true
-    bottom: true
-    right: true
+  property PersistentProperties persist: PersistentProperties {
+      id: persist
+      property bool open: false;
   }
-
-  visible: false
-  focusable: true
-  color: "transparent"
 
   IpcHandler {
     target: ipcTarget
-    function display(visible: bool): void { w.visible = visible }
-    function toggle(): void { w.visible = !w.visible }
+    function display(open: bool): void { persist.open = open }
+    function toggle(): void { persist.open = !persist.open }
   }
 
-  contentItem {
-    focus: true
-    Keys.onPressed: (event) => {
-      if (event.key == Qt.Key_Escape) { w.visible = false; }
-    }
-  }
+  LazyLoader {
+    activeAsync: persist.open
+    PanelWindow {
+      id: w
 
-  Rectangle {
-    anchors.fill: parent
-    color: "{{tint}}"
+      screen: screen
 
-    MouseArea {
-      anchors.fill: parent
-      onClicked: w.visible = false
-      MouseArea {
-        anchors.centerIn: parent
-        width: parent.width * widthRatio
-        height: parent.height * heightRatio
-        Loader {
+      WlrLayershell.namespace: namespace
+
+      WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive // TODO
+
+      anchors {
+        top: true
+        left: true
+        bottom: true
+        right: true
+      }
+
+      focusable: true
+      color: "transparent"
+
+      contentItem {
+        focus: true
+        Keys.onPressed: (event) => {
+          if (event.key == Qt.Key_Escape) { persist.open = false; }
+        }
+      }
+
+      Rectangle {
+        anchors.fill: parent
+        color: "{{tint}}"
+
+        MouseArea {
           anchors.fill: parent
-          sourceComponent: component
+          onClicked: persist.open = false
+          MouseArea {
+            anchors.centerIn: parent
+            width: parent.width * widthRatio
+            height: parent.height * heightRatio
+            Loader {
+              anchors.fill: parent
+              sourceComponent: component
+            }
+          }
         }
       }
     }

@@ -1,10 +1,11 @@
 import QtQuick
 import QtQuick.Controls
 import Quickshell
+import Quickshell.Widgets
 
 import qs.notification
 
-Rectangle { 
+ClippingRectangle { 
   color: "{{bg2}}"
   radius: 5
   border {
@@ -20,7 +21,6 @@ Rectangle {
     boundsBehavior: Flickable.StopAtBounds
     Column {
       id: column
-      anchors.top: parent.top
       anchors.left: parent.left
       anchors.right: parent.right
       Repeater {
