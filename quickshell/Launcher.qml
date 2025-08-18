@@ -1,5 +1,3 @@
-pragma ComponentBehavior: Bound
-
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -23,16 +21,6 @@ Scope {
       widthRatio: 0.3
       heightRatio: 0.6
 
-      Connections {
-        target: root.persist
-
-        function onOpenChanged(): void {
-          if (root.persist.open) {
-            search.focus = true // TODO fix reference error
-          }
-        }
-      }
-
       component: Component {
         ClippingRectangle {
           color: "{{bg2}}"
@@ -40,6 +28,11 @@ Scope {
           border {
             color: "{{bg_dim}}"
             width: 3
+          }
+          Keys.onPressed: (event) => {
+            if (event.key == Qt.Key_Return) { list.currentItem.application.execute(); persist.open = false; }
+            if (event.key == Qt.Key_Down) { list.incrementCurrentIndex(); }
+            if (event.key == Qt.Key_Up) { list.decrementCurrentIndex(); }
           }
           Column {
             anchors.fill: parent
@@ -55,6 +48,7 @@ Scope {
                   id: promptText
                   color: "{{fg}}"
                   text: ">"
+                  Layout.fillHeight: true
                 }
                 TextField {
                   id: search
@@ -62,37 +56,45 @@ Scope {
                   placeholderTextColor: color
                   Layout.fillWidth: true
                   Layout.fillHeight: true
-                  //cursorVisible: false
+                  cursorVisible: false
                   placeholderText: "App"
                   background: Rectangle { color: "transparent" }
+                  Component.onCompleted: forceActiveFocus()
                 }
               }
             }
-            Flickable {
+            ListView {
+              id: list
+              model: ScriptModel {
+                values: DesktopEntries.applications.values.filter(entry => entry.name.toLowerCase().startsWith(search.text.toLowerCase()))
+              }
+
               anchors.top: prompt.bottom
               anchors.bottom: parent.bottom
               anchors.left: parent.left
               anchors.right: parent.right
               anchors.margins: 3
-              contentWidth: width
-              contentHeight: column.height
-              boundsBehavior: Flickable.StopAtBounds
               clip: true
-              ColumnLayout {
-                id: column
-                anchors.left: parent.left
-                anchors.right: parent.right
-                Repeater {
-                  model: DesktopEntries.applications.values
-                  Item {
-                    Layout.fillWidth: true
-                    Layout.minimumHeight: 25
-                    required property DesktopEntry modelData
-                    property DesktopEntry application: modelData
-                    Text {
-                      color: "{{fg}}"
-                      text: application.name
-                    }
+              boundsBehavior: Flickable.StopAtBounds
+              currentIndex: 0
+              highlight: Rectangle { color: "{{bg_green}}"; radius: 5; width: list.width }
+              highlightMoveDuration: 0
+              delegate: Item {
+                height: 30
+                width: list.width
+                required property DesktopEntry modelData;
+                property DesktopEntry application: modelData;
+                Row {
+                  IconImage {
+                    Layout.alignment: Qt.AlignVCenter
+                    asynchronous: true
+                    implicitSize: 30
+                    source: Quickshell.iconPath(modelData.icon)
+                  }
+                  Text {
+                    color: "{{fg}}"
+                    text: application.name
+                    font.pointSize:18
                   }
                 }
               }

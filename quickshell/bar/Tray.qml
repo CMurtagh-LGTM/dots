@@ -19,7 +19,9 @@ Row {
       width: 28
 
       IconImage{
-        source: item.icon
+        source: Quickshell.iconPath(item.icon)
+        implicitSize: 28
+        asynchronous: true
       }
 
       MouseArea {

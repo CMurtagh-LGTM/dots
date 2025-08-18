@@ -11,7 +11,7 @@ import qs.osd
 
 Scope {
   Bar {}
-  Launcher {} // TODO
+  Launcher {}
   NotificationWindow {}
   Panel {}
   Logout {}
