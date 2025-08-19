@@ -40,7 +40,7 @@ Scope {
               id: prompt
               anchors.left: parent.left
               anchors.right: parent.right
-              implicitHeight: promptText.contentHeight
+              implicitHeight: 32 
               color: "{{bg3}}"
               RowLayout {
                 anchors.fill: parent
@@ -48,14 +48,15 @@ Scope {
                   id: promptText
                   color: "{{fg}}"
                   text: ">"
-                  Layout.fillHeight: true
+                  Layout.alignment: Qt.AlignHCenter
+                  Layout.leftMargin: 10
                 }
                 TextField {
                   id: search
                   color: "{{fg}}"
                   placeholderTextColor: color
                   Layout.fillWidth: true
-                  Layout.fillHeight: true
+                  Layout.alignment: Qt.AlignHCenter
                   cursorVisible: false
                   placeholderText: "App"
                   background: Rectangle { color: "transparent" }

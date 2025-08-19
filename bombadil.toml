@@ -15,8 +15,6 @@ posthooks = [
 
 hyprland = { source = "hypr", target = ".config/hypr" }
 alacritty = { source = "alacritty", target = ".config/alacritty" }
-onagre = { source = "onagre", target = ".config/onagre" }
-anyrun = { source = "anyrun", target = ".config/anyrun" }
 quickshell = { source = "quickshell", target = ".config/quickshell" }
 
 zshrc = { source = "zsh/zshrc", target = ".zshrc" }

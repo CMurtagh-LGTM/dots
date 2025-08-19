@@ -33,7 +33,10 @@ Item {
 
       WlrLayershell.namespace: namespace
 
+      exclusionMode: ExclusionMode.Ignore
+      WlrLayershell.layer: WlrLayer.Overlay
       WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive // TODO
+
 
       anchors {
         top: true
