@@ -16,6 +16,8 @@ dmenu = "/usr/bin/wofi -d"
 
 username = "CMurtagh-LGTM"
 
+weather_location = "Sydney"
+
 ### Colours ###
 
 bg_dim = "#232A2E"

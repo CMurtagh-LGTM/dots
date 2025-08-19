@@ -13,4 +13,5 @@ Rectangle {
         anchors.centerIn: parent
         font.pixelSize: 16
     }
+    // TODO click to show calendar
 }

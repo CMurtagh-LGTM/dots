@@ -16,6 +16,7 @@ Variants {
     Item {
         PersistentProperties {
             id: persist
+            reloadableId: "WLogout"
             property bool open: false
         }
 

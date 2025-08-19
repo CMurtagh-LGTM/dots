@@ -35,15 +35,9 @@ Scope {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
               }
-              Rectangle{ // TODO Weather and Calendar
-                color: "{{bg2}}"
+              WeatherPanel {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                radius: 5
-                border {
-                  color: "{{bg_dim}}"
-                  width: 3
-                }
               }
               Resource {
                 Layout.fillWidth: true
