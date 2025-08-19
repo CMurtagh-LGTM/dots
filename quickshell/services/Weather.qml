@@ -22,7 +22,7 @@ Singleton {
     }
 
     function reload(): void {
-        Requests.get(`https://wttr.in/${location}?format=%C,%t,%u`, text => {
+        Requests.get(`https://wttr.in/${location}?format=%C,%t,%u`).then(text => {
             const details = text.split(",");
             description = details[0];
             temp = details[1].startsWith("+") ? details[1].slice(1) : details[1];
@@ -38,7 +38,7 @@ Singleton {
 
     Timer {
         id: timer
-        interval: 3600000 // 1 Hour
+        interval: 1200000 // 20 mins
         repeat: true
     }
 
@@ -84,6 +84,7 @@ Singleton {
         if (desc == "rain wind") { return ''; }
         if (desc == "rain") { return ''; }
         if (desc == "showers") { return ''; }
+        if (desc == "light rain shower") { return ''; }
         if (desc == "light drizzle") { return ''; }
         if (desc == "snow") { return ''; }
         if (desc == "sprinkle") { return ''; }
