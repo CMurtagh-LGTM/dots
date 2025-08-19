@@ -7,7 +7,7 @@ import Quickshell
 Singleton {
     id: root
 
-    function get(url: string, callback: var): void {
+    function get(url: string, callback: var): Promise {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
 
@@ -23,8 +23,8 @@ Singleton {
                     if (xhr.status === 200)
                         resolve(xhr.responseText);
                     else
-                        reject();
                         console.warn(`[REQUESTS] GET request to ${url} failed with status ${xhr.status}`);
+                        reject();
                     cleanup();
                 }
             };

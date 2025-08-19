@@ -20,4 +20,5 @@ Scope {
   // Lockscreen
   // bluetooth manager
   // greeter
+  WiktionarySearcher {}
 }
