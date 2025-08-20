@@ -16,7 +16,7 @@ Scope {
   Panel {}
   Logout {}
   Volume {}
-  // brightness osd
+  BrightnessOSD {}
   // Lockscreen
   // bluetooth manager
   // greeter
