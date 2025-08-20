@@ -35,5 +35,4 @@ Rectangle {
         hoverEnabled: true
         onClicked: calendar.visible = !calendar.visible
     }
-    // TODO click to show calendar
 }

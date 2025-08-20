@@ -35,7 +35,7 @@ Item {
 
       exclusionMode: ExclusionMode.Ignore
       WlrLayershell.layer: WlrLayer.Overlay
-      WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive // TODO
+      WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
 
       anchors {

@@ -36,7 +36,7 @@ Rectangle {
         radius: width/2
         Image {
           anchors.fill: parent
-          source: player ? player.trackArtUrl : "pfp.png" // TODO cache the image
+          source: player ? player.trackArtUrl : "pfp.png"
         }
       }
       Shape {
