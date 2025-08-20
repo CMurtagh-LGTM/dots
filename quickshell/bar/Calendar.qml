@@ -84,7 +84,7 @@ Rectangle {
 
               horizontalAlignment: Text.AlignHCenter
               text: Qt.formatDate(day.model.date, "d")
-              color: "{{fg}}"
+              color:  grid.month === model.month ? "{{fg}}" : transparent
           }
         }
       }
