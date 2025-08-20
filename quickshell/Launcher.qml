@@ -67,7 +67,7 @@ Scope {
             ListView {
               id: list
               model: ScriptModel {
-                values: DesktopEntries.applications.values.filter(entry => entry.name.toLowerCase().startsWith(search.text.toLowerCase()))
+                values: FzyFinder.filter(search.text, DesktopEntries.applications.values, "name");
               }
 
               anchors.top: prompt.bottom
@@ -100,6 +100,11 @@ Scope {
                 }
               }
               ScrollBar.vertical: ScrollBar { }
+            }
+
+            Connections {
+                target: search
+                onTextChanged: list.currentIndex = 0
             }
           }
         }

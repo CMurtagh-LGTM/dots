@@ -4,8 +4,6 @@ import Quickshell.Widgets
 import QtQuick
 import QtQuick.Controls
 
-// TODO Make icon work
-
 Row {
   spacing: 0
   Repeater {
@@ -19,7 +17,7 @@ Row {
       width: 28
 
       IconImage{
-        source: Quickshell.iconPath(item.icon)
+        source: item.icon
         implicitSize: 28
         asynchronous: true
       }

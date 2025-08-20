@@ -22,8 +22,8 @@ Singleton {
     }
 
     function reload(): void {
-        Requests.get(`https://wttr.in/${location}?format=%C,%t,%u`).then(text => {
-            const details = text.split(",");
+        Requests.get(`https://wttr.in/${location}?format=%C_%t_%u`).then(text => {
+            const details = text.split("_");
             description = details[0];
             temp = details[1].startsWith("+") ? details[1].slice(1) : details[1];
             uv = details[2];
@@ -58,6 +58,10 @@ Singleton {
 
     function getWeatherIcon(desc: string): string {
         desc = desc.toLowerCase();
+        desc = desc.split(",")[0];
+        if (desc.startsWith("light ")) {
+            desc = desc.substring(6);
+        }
         if (desc == "day cloudy gusts") { return ''; }
         if (desc == "day cloudy windy") { return ''; }
         if (desc == "day cloudy") { return ''; }
@@ -84,8 +88,8 @@ Singleton {
         if (desc == "rain wind") { return ''; }
         if (desc == "rain") { return ''; }
         if (desc == "showers") { return ''; }
-        if (desc == "light rain shower") { return ''; }
-        if (desc == "light drizzle") { return ''; }
+        if (desc == "rain shower") { return ''; }
+        if (desc == "drizzle") { return ''; }
         if (desc == "snow") { return ''; }
         if (desc == "sprinkle") { return ''; }
         if (desc == "storm showers") { return ''; }
