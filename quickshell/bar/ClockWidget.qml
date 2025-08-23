@@ -22,8 +22,8 @@ Rectangle {
         anchor.edges: Edges.Bottom
         anchor.margins.left: -width
         anchor.margins.bottom: -10
-        width: calendarComponent.width
-        height: calendarComponent.height
+        implicitWidth: calendarComponent.width
+        implicitHeight: calendarComponent.height
         Calendar {
             id: calendarComponent
         }

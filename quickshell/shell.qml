@@ -6,8 +6,10 @@ import qs.bar
 import qs.notification
 import qs.wlogout
 import qs.osd
+import qs.input_method
 
 // TODO fix warnings
+
 
 Scope {
   Bar {}
@@ -20,5 +22,6 @@ Scope {
   // Lockscreen
   // bluetooth manager
   // greeter
+  Emoji {}
   WiktionarySearcher {}
 }
