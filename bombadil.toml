@@ -26,6 +26,8 @@ git = { source = "git", target = ".config/git" }
 zathura = { source = "zathura", target = ".config/zathura" }
 btop = { source = "btop", target = ".config/btop" }
 
+fonst = { source = "fontconfig", target = ".config/fontconfig" }
+
 systemd = { source = "systemd", target = ".config/systemd" }
 
 applications = { source = "applications", target = ".local/share/applications" }
