@@ -7,19 +7,19 @@ import qs.notification
 import qs.wlogout
 import qs.osd
 import qs.input_method
+import qs.lock
 
 // TODO fix warnings
 
-
-Scope {
+ShellRoot {
   Bar {}
   Launcher {}
   NotificationWindow {}
   Panel {}
-  Logout {}
+  Logout {} // TODO make this look better and be keyboard driven
   Volume {}
   BrightnessOSD {}
-  // Lockscreen
+  Lockscreen {}
   // bluetooth manager
   // greeter
   Emoji {}
