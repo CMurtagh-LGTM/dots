@@ -4,19 +4,17 @@ import Quickshell.Wayland
 import Quickshell.Io
 
 Item {
-  QSInputMethod {
+    KeyboardTextEdit {
     id: input_method
 
-    KeyboardTextEdit {
-      transform: function (text: string): string {
-        if (input_method.contentHint & ContentHint.LATIN) {
-          console.log(input_method.contentHint);
-          return text;
-        }
-        return {
-            "cool": "😎"
-        }[text];
+    transform: function (text: string): string {
+      if (input_method.contentHint & ContentHint.LATIN) {
+        console.log(input_method.contentHint);
+        return text;
       }
+      return {
+        "cool": "😎"
+      }[text];
     }
 
     // popupSurface: Item {
