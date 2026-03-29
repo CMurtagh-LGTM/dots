@@ -15,4 +15,6 @@ export LUA_CPATH='/usr/local/lib/lua/5.1/?.so;/usr/lib/lua/5.1/?.so;/usr/local/l
 
 export GEM_HOME="$(gem env user_gemhome)"
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.luarocks/bin/:$GEM_HOME/bin"
+export CARGO_HOME="/home/cameron/.cargo"
+
+export PATH="$PATH:$HOME/.local/bin:$HOME/.luarocks/bin/:$GEM_HOME/bin:$CARGO_HOME/bin/"

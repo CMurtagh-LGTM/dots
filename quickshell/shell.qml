@@ -19,7 +19,7 @@ ShellRoot {
   Logout {} // TODO make this look better and be keyboard driven
   Volume {}
   BrightnessOSD {}
-  Lockscreen {}
+  // Lockscreen {}
   // bluetooth manager
   // greeter
   Emoji {}
