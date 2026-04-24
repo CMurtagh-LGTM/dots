@@ -17,4 +17,6 @@ export GEM_HOME="$(gem env user_gemhome)"
 
 export CARGO_HOME="/home/cameron/.cargo"
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.luarocks/bin/:$GEM_HOME/bin:$CARGO_HOME/bin/"
+export NIMBLE_HOME="/home/cameron/.nimble"
+
+export PATH="$PATH:$HOME/.local/bin:$HOME/.luarocks/bin/:$GEM_HOME/bin:$CARGO_HOME/bin/:$NIMBLE_HOME/bin/"
