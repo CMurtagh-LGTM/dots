@@ -22,6 +22,6 @@ ShellRoot {
   // Lockscreen {}
   // bluetooth manager
   // greeter
-  Emoji {}
+  // Emoji {}
   WiktionarySearcher {}
 }
