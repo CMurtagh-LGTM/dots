@@ -8,7 +8,7 @@ vars = [ "vars.toml" ]
 posthooks = [
     "python ~/.local/bin/download-themes.py",
     # "hyprctl reload",
-    "zimfw install"
+    # "zimfw install"
 ]
 
 [settings.dots]
@@ -26,7 +26,7 @@ git = { source = "git", target = ".config/git" }
 zathura = { source = "zathura", target = ".config/zathura" }
 btop = { source = "btop", target = ".config/btop" }
 
-fonst = { source = "fontconfig", target = ".config/fontconfig" }
+fonts = { source = "fontconfig", target = ".config/fontconfig" }
 
 systemd = { source = "systemd", target = ".config/systemd" }
 
