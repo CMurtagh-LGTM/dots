@@ -15,6 +15,7 @@ posthooks = [
 
 hyprland = { source = "hypr", target = ".config/hypr" }
 alacritty = { source = "alacritty", target = ".config/alacritty" }
+foot = { source = "foot", target = ".config/foot" }
 quickshell = { source = "quickshell", target = ".config/quickshell" }
 
 zshrc = { source = "zsh/zshrc", target = ".zshrc" }
