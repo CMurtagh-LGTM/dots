@@ -39,8 +39,12 @@ Scope {
         id: tray
         anchors.right: parent.right
       }
-      Mpris {
+      Battery {
+        id: battery
         anchors.right: tray.left
+      }
+      Mpris {
+        anchors.right: battery.left
       }
     }
   }

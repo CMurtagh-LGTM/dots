@@ -16,7 +16,7 @@ Row {
       height: 30
       width: 28
 
-      IconImage{
+      IconImage {
         source: item.icon
         implicitSize: 28
         asynchronous: true
