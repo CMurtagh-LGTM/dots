@@ -50,7 +50,7 @@ Row {
                 anchors.fill: parent
                 hoverEnabled: true
                 // onClicked: workspace.activate()
-                onClicked: Hyprland.dispatch(`workspace ${workspace.name}`)
+                onClicked: Hyprland.dispatch(`hl.dsp.focus({ workspace = "${workspace.name}" })`)
             }
         }
     }
