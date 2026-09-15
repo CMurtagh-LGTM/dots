@@ -29,6 +29,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("quickshell -n")
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("hypridle")
+  hl.exec_cmd("udiskie")
   hl.exec_cmd("hyprpm reload -n")
   hl.exec_cmd("systemctl --user start hyprpolkitagent")
   if hostname == "Artemis" then
@@ -59,7 +60,6 @@ hl.config({
 })
 
 hl.permission({binary = "/usr/(bin|local/bin)/grim", type = "screencopy", mode = "allow"})
-hl.permission({binary = "/usr/(bin|local/bin)/grimshot", type = "screencopy", mode = "allow"})
 hl.permission({binary = "/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", type = "screencopy", mode = "allow"})
 hl.permission({binary = "/usr/(bin|local/bin)/hyprlock", type = "screencopy", mode = "allow"})
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
@@ -220,7 +220,7 @@ hl.bind(mainMod .. " + Z", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(editor))
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("grimshot copy area"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("grim -g \"$(slurp)\""))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("hyprpicker"))
 
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
