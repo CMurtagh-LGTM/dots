@@ -10,6 +10,7 @@ hl.monitor({
     scale    = "auto",
 })
 
+local hostname = require("lib/hostname").get()
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -24,12 +25,15 @@ local editor = "neovide"
 ---- AUTOSTART ----
 -------------------
 
-hl.on("hyprland.start", function () 
+hl.on("hyprland.start", function ()
   hl.exec_cmd("quickshell -n")
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("hypridle")
   hl.exec_cmd("hyprpm reload -n")
-  -- hl.exec_cmd("systemctl --user start hyprpolkitagent")
+  hl.exec_cmd("systemctl --user start hyprpolkitagent")
+  if hostname == "Artemis" then
+    hl.exec_cmd("nm-applet")
+  end
 end)
 
 
