@@ -119,7 +119,6 @@ hl.config({
     dwindle = {
         preserve_split = true, -- You probably want this
         force_split = 2,
-        special_scale_factor = 0.9
     },
 })
 
@@ -315,3 +314,13 @@ hl.window_rule({
     match = { class = "Godot", initial_title = "Godot" },
     tile = true,
 })
+
+hl.workspace_rule({
+    workspace = "special:Discord",
+    gaps_out = 80,
+})
+hl.workspace_rule({
+    workspace = "special:Spotify",
+    gaps_out = 80,
+})
+
